@@ -12,15 +12,12 @@ if ($mysqli->connect_errno) {
     echo "<h1>Debugging errno: </h1>" . mysqli_connect_errno() . PHP_EOL . "<br />";
     echo "<h1>Debugging error: </h1>" . mysqli_connect_error() . PHP_EOL . "<br />";
     die();
-    //printf("Connection failed: %s\n", $mysqli->connect_error);
-    die();
 }
 //Create the database
 if (!$mysqli->query('CREATE DATABASE projet')) {
     printf("Errormessage: %s\n", $mysqli->error);
 }
-//Create users table with all the fields
-//On va créer une nouvelle table admin dans la base espav
+//On va créer une nouvelle table bans la base
 $mysqli->query('
 CREATE TABLE `projet`.`users` 
 (

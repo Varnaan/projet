@@ -8,6 +8,8 @@ require 'validate/validate_signup.php';
 ?>
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 	<title>Sign-up</title>
 	<link href="//db.onlinewebfonts.com/c/a4e256ed67403c6ad5d43937ed48a77b?family=Core+Sans+N+W01+35+Light" rel="stylesheet" type="text/css"/>
@@ -17,7 +19,7 @@ require 'validate/validate_signup.php';
 	<div class="body-content">
   		<div class="module">
 		    <h1>Sign-up</h1>
-		    <form class="form" action="signup.php" method="POST" enctype="multipart/form-data" autocomplete="on">
+		    <form class="form" action="signup.php" method="POST" enctype="multipart/form-data" autocomplete="off">
 		      <div class="alert alert-error"></div>
 		      <input type="text" placeholder="User Name" name="username" class='field'  required /><br>
 		      <input type="email" placeholder="Email" name="email" class='field'  required /><br>
