@@ -17,7 +17,7 @@ if (!isset($_SESSION['username'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <head>
-	<title>Yotsublog</title>
+	<title>Wall</title>
 </head>
 <audio></audio>
 <body>
@@ -25,12 +25,11 @@ if (!isset($_SESSION['username'])) {
 	<div>
 		<div>
 			<fieldset class="outCom">
-			<legend><h2> Hello <?= $_SESSION['username'] ?></h2></legend>
 			<?php
     $auteur = $_POST["auteur"];
     $contenu = $_POST["contenu"];
     $nom_serv = "localhost";
-    $nom_base = "blog";
+    $nom_base = "projet";
     $identifiant = "root";
     $mot_de_passe = "vincent1994";
     ?>
@@ -48,29 +47,34 @@ if (!isset($_SESSION['username'])) {
     } catch (PDOException $e) {
         echo "Echec de connexion et d'enregistrement: " . $e->getMessage();
     }
-    $response = $connexion->query('SELECT * FROM commentaires');
+    $response = $connexion->query('SELECT * FROM messages');
     $response->execute();
     while ($donnees = $response->fetch()) {
         $date = $donnees['date'];
         $datej = date('d M', strtotime($date));
         $dateh = date('H:i:s', strtotime($date));
 
-        // echo $_SESSION['username'] == $donnees['auteur'];
         if ( $_SESSION['username'] == $donnees['auteur'] ) {
-            echo "<div class='msg' style='text-align:right'><legend>posted by " . htmlspecialchars($donnees['auteur']) . ' ' . 'le ' . $datej . ' à ' . $dateh . '</legend>' . '<p>' . htmlspecialchars($donnees['contenu']) . '</p></div>';
+            echo "<div  class='msg' style='text-align:right'>" .
+            '<h3>' . htmlspecialchars($donnees['auteur']) . ' ' . 'le ' . $datej . ' à ' . $dateh . '' . 
+            '</"h3">' . '<br>' . "<span id='speech-bubble-own'>" . htmlspecialchars($donnees['contenu']) . 
+            '</span></div>';
         } else {
-            echo '<div  class="msg" "><legend>posted by ' . htmlspecialchars($donnees['auteur']) . ' ' . 'le ' . $datej . ' à ' . $dateh . '</legend>' . '<p>' . htmlspecialchars($donnees['contenu']) . '</p></div>';
+            echo "<div  class='msg' style='text-align:left'>" .
+            '<h3>' . htmlspecialchars($donnees['auteur']) . ' ' . 'le ' . $datej . ' à ' . $dateh . '' . 
+            '</"h3">' . '<br>' . "<span id='speech-bubble-other'>" . htmlspecialchars($donnees['contenu']) . 
+            '</span></div>';
         }
     }
     ?>
     </div>
 	 			</div>
 	 		</div>
-<footer>
+<footer class="wrapper">
 		<form  action="validate/validate_chatbox.php" method="POST">
-			<input type="text" name="auteur" value="<?= $_SESSION['username']?>"  readonly><br>
-			<textarea rows="2" cols="50" placeholder="评论。。。。。。" name = "contenu"></textarea>
-			<input type="submit" name="submit" value="发送">
+			<input type="hidden" name="auteur" value="<?= $_SESSION['username']?>"  readonly><br>
+			<textarea class="one" rows="2" cols="50" placeholder="评论。。。。。。" name = "contenu"></textarea>
+			<input class="four" type="submit" name="submit" value="Send">
         </form>
 </footer>
 	</div>

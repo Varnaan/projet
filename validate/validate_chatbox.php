@@ -12,7 +12,7 @@ session_start()
 	$auteur = $_POST["auteur"];
 	$contenu = $_POST["contenu"];
 	$nom_serv ="localhost";
-	$nom_base ="blog";
+	$nom_base ="projet";
 	$identifiant ="root";
 	$mot_de_passe ="vincent1994";
 	if ($auteur == "" || $contenu == "") {
@@ -25,7 +25,7 @@ session_start()
 								$identifiant,
 								$mot_de_passe);		
 			$connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$req= "INSERT INTO commentaires (auteur, contenu)
+			$req= "INSERT INTO messages (auteur, contenu)
 							VALUES('$auteur','$contenu')";
 
 			$connexion->exec($req);		

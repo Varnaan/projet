@@ -21,7 +21,7 @@
     if (isset($_SESSION['email'])) {
       echo '
       <ul class="nav navbar-nav">
-      <li class="active"><a href="chatbox.php">Profile</a></li>
+      <li class="active"><a href="chatbox.php">Chatbox</a></li>
       </ul>
       ';
       echo '

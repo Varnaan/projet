@@ -27,4 +27,15 @@ CREATE TABLE `projet`.`users`
     `password` VARCHAR(100) NOT NULL,
 PRIMARY KEY (`id`) 
 );') or die($mysqli->error);
+
+$mysqli->query('
+CREATE TABLE `projet`.`messages` 
+(
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `auteur` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT Anonymous,
+    `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `contenu` text CHARACTER SET utf8 NOT NULL,
+PRIMARY KEY (`id`) 
+);') or die($mysqli->error);
+
 ?>
