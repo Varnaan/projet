@@ -54,16 +54,16 @@ if (!isset($_SESSION['username'])) {
         $datej = date('d M', strtotime($date));
         $dateh = date('H:i:s', strtotime($date));
 
-        if ( $_SESSION['username'] == $donnees['auteur'] ) {
+        if ($_SESSION['username'] == $donnees['auteur']) {
             echo "<div  class='msg' style='text-align:right'>" .
-            '<h3>' . htmlspecialchars($donnees['auteur']) . ' ' . 'le ' . $datej . ' à ' . $dateh . '' . 
-            '</"h3">' . '<br>' . "<span id='speech-bubble-own'>" . htmlspecialchars($donnees['contenu']) . 
-            '</span></div>';
+                '<h3>' . htmlspecialchars($donnees['auteur']) . ' ' . 'le ' . $datej . ' à ' . $dateh . '' .
+                '</"h3">' . '<br>' . "<span id='speech-bubble-own'>" . htmlspecialchars($donnees['contenu']) .
+                '</span></div>';
         } else {
             echo "<div  class='msg' style='text-align:left'>" .
-            '<h3>' . htmlspecialchars($donnees['auteur']) . ' ' . 'le ' . $datej . ' à ' . $dateh . '' . 
-            '</"h3">' . '<br>' . "<span id='speech-bubble-other'>" . htmlspecialchars($donnees['contenu']) . 
-            '</span></div>';
+                '<h3>' . htmlspecialchars($donnees['auteur']) . ' ' . 'le ' . $datej . ' à ' . $dateh . '' .
+                '</"h3">' . '<br>' . "<span id='speech-bubble-other'>" . htmlspecialchars($donnees['contenu']) .
+                '</span></div>';
         }
     }
     ?>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['username'])) {
 	 		</div>
 <footer class="wrapper">
 		<form  action="validate/validate_chatbox.php" method="POST">
-			<input type="hidden" name="auteur" value="<?= $_SESSION['username']?>"  readonly><br>
+			<input type="hidden" name="auteur" value="<?= $_SESSION['username'] ?>"  readonly><br>
 			<textarea class="one" rows="2" cols="50" placeholder="评论。。。。。。" name = "contenu"></textarea>
 			<input class="four" type="submit" name="submit" value="Send">
         </form>

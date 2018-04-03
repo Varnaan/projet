@@ -5,3 +5,7 @@
 .glyphicon.glyphicon-log-in{
     color: darkgoldenrod;
 }
+
+body {
+    width: 100%;
+}
