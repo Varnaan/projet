@@ -13,11 +13,11 @@ if ($mysqli->connect_errno) {
     echo "<h1>Debugging error: </h1>" . mysqli_connect_error() . PHP_EOL . "<br />";
     die();
 }
-//Create the database
+//Créer la base de donnée
 if (!$mysqli->query('CREATE DATABASE projet')) {
     printf("Errormessage: %s\n", $mysqli->error);
 }
-//On va créer une nouvelle table bans la base
+//On va créer les nouvelles tables bans la base
 $mysqli->query('
 CREATE TABLE `projet`.`users` 
 (

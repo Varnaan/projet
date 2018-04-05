@@ -17,7 +17,7 @@ if (!isset($_SESSION['username'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <head>
-	<title>Wall</title>
+	<title>Chatbox</title>
 </head>
 <audio></audio>
 <body>
@@ -52,11 +52,11 @@ if (!isset($_SESSION['username'])) {
     while ($donnees = $response->fetch()) {
         $date = $donnees['date'];
         $datej = date('d M', strtotime($date));
-        $dateh = date('H:i:s', strtotime($date));
+        $dateh = date('H:i', strtotime($date));
 
         if ($_SESSION['username'] == $donnees['auteur']) {
             echo "<div  class='msg' style='text-align:right'>" .
-                '<h3>' . htmlspecialchars($donnees['auteur']) . ' ' . 'le ' . $datej . ' à ' . $dateh . '' .
+                '<h3>' . htmlspecialchars($donnees['auteur']) . ' ' . 'on ' . $datej . ', ' . $dateh . '' .
                 '</"h3">' . '<br>' . "<span id='speech-bubble-own'>" . htmlspecialchars($donnees['contenu']) .
                 '</span></div>';
         } else {
